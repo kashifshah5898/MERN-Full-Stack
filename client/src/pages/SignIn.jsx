@@ -14,8 +14,8 @@ function SignIn() {
       ? import.meta.env.VITE_DEV_URL
       : import.meta.env.VITE_PROD_URL;
 
-  console.log({ BASE_URL });
-  console.log(import.meta.env.VITE_NODE_ENV);
+  // console.log({ BASE_URL });
+  // console.log(import.meta.env.VITE_NODE_ENV);
 
   const [formData, setFormData] = React.useState({});
   const [isError, setIsError] = React.useState(false);

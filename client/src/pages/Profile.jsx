@@ -47,7 +47,7 @@ function Profile() {
 
   const handleSignOut = async () => {
     try {
-      await fetch(`${BASE_URL}/api/auth/signout`, {
+      await fetch(`/api/auth/signout`, {
         method: "GET",
         credentials: "include",
       });
@@ -66,7 +66,7 @@ function Profile() {
     try {
       dispatch(updateUserStart());
       const response = await fetch(
-        `${BASE_URL}/api/user/update/${currentUser._id}`,
+        `/api/user/update/${currentUser._id}`,
         {
           method: "POST",
           credentials: "include", // includes the token in the header
@@ -119,7 +119,7 @@ function Profile() {
     dispatch(deleteUserStart());
     try {
       const response = await fetch(
-        `${BASE_URL}/api/user/delete/${currentUser._id}`,
+        `/api/user/delete/${currentUser._id}`,
         {
           method: "DELETE",
         }
