@@ -10,5 +10,6 @@ export const verifyToken = async (req, res, next) => {
     req.user = user;
     next();
   });
+  res.status(401).json("You are not authorized to access this. Inalid Token");
   return;
 };

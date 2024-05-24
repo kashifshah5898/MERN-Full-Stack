@@ -15,14 +15,17 @@ const BASE_URL =
     ? process.env.DEV_URL
     : process.env.PROD_URL;
 
-mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(function () {
-    console.log("mongodb connected");
-  })
-  .catch((e) => {
-    console.log("an error occured", e.message);
-  });
+const connectDB = async () => {
+  try {
+
+    const connection = await mongoose.connect(process.env.MONGODB_URL)
+    console.log(`connection established at : ${connection.connection.host} with ${connection.connection.name}`)
+  } catch (error) {
+    console.error(`Error while connecting to ${error}`)
+    process.exit(1)
+  }
+}
+connectDB()
 const app = express();
 app.use(cookieParser());
 app.use(
