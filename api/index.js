@@ -41,6 +41,9 @@ app.use(express.json());
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.get("/api/get-me", (req, res) => {
+  res.status(200).json({ success: true, msg: "api is working fine" });
+})
 
 /*custom middleware for errors - THIS IS THE NEXT MIDDLEWARE AFTER THE /signup middleware above. Hence next in the authcontroller points to this. R
 Remember to always add next as a parameter in your middleware */
