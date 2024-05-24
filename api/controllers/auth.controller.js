@@ -96,14 +96,20 @@ export const GoogleAuthController = async (req, res, next) => {
         .status(200)
         .json(userRest);
     }
-  } catch (e) {}
+  } catch (e) { }
 };
 
 export const SignOutController = async (req, res) => {
-  const token = req.cookies.access_token;
-  if (!token){
+  try {
+    const token = req.cookies.access_token;
+    if (!token) {
+      res.status(400);
+      throw new Error("Invalid access token")
+    };
+    res.clearCookie("access_token").status(200).json("User signed out");
+  } catch (error) {
     res.status(400);
-    throw new Error("Invalid access token")
-  } ;
-  res.clearCookie("access_token").status(200).json("User signed out");
+    throw new Error("something went wrong while signing out")
+  }
+
 };
