@@ -45,7 +45,7 @@ app.use(express.json());
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.get("/api/get-me", (req, res) => {
-  res.status(200).json({ success: true, msg: "api is working fine" });
+  res.status(200).json({ success: true, msg: "api is working fine", data: process.env.MONGODB_URL });
 })
 
 /*custom middleware for errors - THIS IS THE NEXT MIDDLEWARE AFTER THE /signup middleware above. Hence next in the authcontroller points to this. R
